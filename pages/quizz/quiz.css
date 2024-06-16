@@ -16,6 +16,8 @@
     --bg-html: #fff1e9;
     --bg-css: #e8fdef;
     --bg-javascript: #ebf0ff;
+    --gren: #26d782;
+    --red: #ee5454;
     --bg-acessibilidade: #f6e7ff;
     --primary-text-color: #313e51;
     --bg-mobile: url(../../assets/images/pattern-background-mobile-light.svg);
@@ -151,7 +153,14 @@ main {
     color: var(--primary-text-color);
 }
 
-.alternativas label:has(input:checked)
+.alternativas label:has(input:checked) {
+    outline: 3px solid var(--purple);
+
+    & span {
+        background: var(--purple);
+        color: var(--white);
+    }
+}
 
 .alternativas input {
     display: none;
