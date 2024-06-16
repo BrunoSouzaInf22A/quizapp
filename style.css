@@ -88,8 +88,6 @@ main {
 }
 
 .assuntos {
-    border: 1px solid red;
-
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -104,20 +102,33 @@ main {
     padding: 12px;
     border-radius: 12px;
     box-shadow: var(--shadow);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-text-color);
+}
+
+.assuntos button div {
+    width: 40px;
+    height: 40x;
+    padding: 5px;
+}
+
+.assuntos button img {
+    width: 100%;
 }
 
 .botao_html div {
-    background:var(--bg-html) ;
+    background:var(--bg-html);
 }
 
 .botao_css div {
-    background:var(--bg-css) ;
+    background:var(--bg-css);
 }
 
 .botao_javascript div {
-    background:var(--bg-javascript) ;
+    background:var(--bg-javascript);
 }
 
 .botao_acessibilidade div {
-    background:var(--bg-acessibilidade) ;
+    background:var(--bg-acessibilidade);
 }
