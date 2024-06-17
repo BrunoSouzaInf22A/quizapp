@@ -245,7 +245,8 @@ main {
 
     header {
         margin-block: 81px;
-        max-width: 1160px;margin-inline: auto;
+        max-width: 1160px;
+        margin-inline: auto;
     }
 
     .assunto_icone {
