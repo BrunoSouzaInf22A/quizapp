@@ -19,8 +19,6 @@
     --bg-html: #fff1e9;
     --bg-css: #e8fdef;
     --bg-javascript: #ebf0ff;
-    --gren: #26d782;
-    --red: #ee5454;
     --bg-acessibilidade: #f6e7ff;
     --primary-text-color: #313e51;
     --bg-mobile: url(../../assets/images/pattern-background-mobile-light.svg);
@@ -125,6 +123,7 @@ main h2 strong {
     gap: 16px;
     border-radius: 12px;
     margin-bottom: 12px;
+    box-shadow: var(--shadow);
 }
 .pontuaçao strong {
     font-size: 88px;
@@ -148,6 +147,7 @@ main button {
     font-size: 18px;
     font-weight: 500;
     transition: background 0.3s;
+    box-shadow: var(--shadow);
 }
 
 .pontuaçao button:hover {
