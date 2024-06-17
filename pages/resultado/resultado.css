@@ -207,4 +207,27 @@ main button {
     main > div {
         width: 100%;
     }
+
+    main h2 {
+        font-size: 64px;
+    }
+
+    .pontuaçao {
+        border-radius: 24px;
+        margin-bottom: 32px;
+    }
+
+    .pontuaçao strong {
+        font-size: 144px;
+    }
+
+    .pontuaçao p {
+        font-size: 24px;
+    }
+
+    main button {
+        font-size: 22px;
+        padding: 24px;
+        border-radius: 24px;
+    }
 }
