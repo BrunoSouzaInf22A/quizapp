@@ -12,57 +12,57 @@ let idInputResposta = ""
 let respostaCorretaId = ""
 
 botaoTema.addEventListener("click", () => {
-    trocarTema(body, botaoTema);
+    trocarTema(body, botaoTema)
 });
 
-verificarTema(body, botaoTema);
+verificarTema(body, botaoTema)
 
 if (!assunto) {
-    console.warn("Assunto não definido no localStorage");
+    console.warn("Assunto não definido no localStorage")
 }
 
 function alterarAssunto() {
-    if (!assunto) return;
+    if (!assunto) return
 
-    const divIcone = document.querySelector(".assunto_icone");
-    const iconeImg = document.querySelector(".assunto_icone img");
-    const assuntoTitulo = document.querySelector(".assunto h1");
+    const divIcone = document.querySelector(".assunto_icone")
+    const iconeImg = document.querySelector(".assunto_icone img")
+    const assuntoTitulo = document.querySelector(".assunto h1")
 
-    divIcone.classList.add(assunto.toLowerCase());
-    iconeImg.setAttribute("alt", `ícone de ${assunto}`);
-    iconeImg.setAttribute("src", `../../assets/images/icon-${assunto.toLowerCase()}.svg`);
-    assuntoTitulo.textContent = assunto.charAt(0).toUpperCase() + assunto.slice(1);
+    divIcone.classList.add(assunto.toLowerCase())
+    iconeImg.setAttribute("alt", `ícone de ${assunto}`)
+    iconeImg.setAttribute("src", `../../assets/images/icon-${assunto.toLowerCase()}.svg`)
+    assuntoTitulo.textContent = assunto.charAt(0).toUpperCase() + assunto.slice(1)
 }
 
 async function buscarPerguntas() {
-    const urlDados = "../../data.json";
+    const urlDados = "../../data.json"
 
     try {
-        const resposta = await fetch(urlDados);
-        const dados = await resposta.json();
+        const resposta = await fetch(urlDados)
+        const dados = await resposta.json()
 
         dados.quizzes.forEach(dado => {
             if (dado.title === assunto) {
-                quiz = dado;
+                quiz = dado
             }
         });
     } catch (error) {
-        console.error("Erro ao buscar perguntas:", error);
+        console.error("Erro ao buscar perguntas:", error)
     }
 }
 
 function montarPergunta() {
     if (!quiz.questions || quiz.questions.length === 0) {
-        console.error("Nenhuma pergunta encontrada para o quiz.");
+        console.error("Nenhuma pergunta encontrada para o quiz.")
         return;
     }
 
-    const main = document.querySelector("main");
+    const main = document.querySelector("main")
 
     main.innerHTML = `
         <section class="pergunta">
             <div>
-                <p>Quetão ${pergunta} de 10</p>
+                <p>Questão ${pergunta} de 10</p>
                 <h2>${alterarSinais(quiz.questions[pergunta-1].question)}</h2>
             </div>
             <div class="barra_progresso">
@@ -73,7 +73,7 @@ function montarPergunta() {
         <section class="alternativas">
             <form action="">
                 <label for="alternativa_a">
-                    <input type="radio" id="alternativa_a" name="alternativa value="${alterarSinais(quiz.questions[pergunta-1].options[0])}">
+                    <input type="radio" id="alternativa_a" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[0])}">
                     <div>
                         <span>A</span>
                         ${alterarSinais(quiz.questions[pergunta-1].options[0])}
@@ -107,7 +107,7 @@ function montarPergunta() {
 }
 
 function alterarSinais(texto) {
-    return texto.replace(/</g, "&alt;").replace(/>/g, "&gt;")
+    return texto.replace(/</g, "&lt;").replace(/>/g, "&gt;")
 }
 
 function guardarResposta(evento) {
@@ -128,14 +128,14 @@ function validarResposta() {
         botaoEnviar.innerText = "Finalizar"
         botaoEnviar.addEventListener("click", finalizar)
     } else {
-        botaoEnviar.addEventListener("clcik", proximaPergunta)
+        botaoEnviar.addEventListener("click", proximaPergunta)
     }
 
     if (resposta === quiz.questions[pergunta-1].answer) {
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "correta")
         pontos = pontos + 1
     } else {
-        Document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "errada")
+        document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "errada")
         document.querySelector(`label[for='${respostaCorretaId}']`).setAttribute("id", "correta")
     }
 
@@ -161,15 +161,14 @@ function adicionarEventoInput() {
         if (input.value === quiz.questions[pergunta-1].answer) {
             respostaCorretaId = input.id
         }
-    })
+    });
 }
 
 async function iniciar() {
-    alterarAssunto();
-    await buscarPerguntas();
-    montarPergunta();
+    alterarAssunto()
+    await buscarPerguntas()
+    montarPergunta()
     adicionarEventoInput()
-
 }
 
-iniciar();
+iniciar()
